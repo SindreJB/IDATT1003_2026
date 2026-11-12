@@ -4,8 +4,8 @@ Portfolio project in IDATT1003 Programming 1 (NTNU, autumn 2026): a text based a
 for logging trips and activities, with a register of loggers, groups, and local sharing of
 activities.
 
-**Status:** project backbone only. The application starts and prints its name. Nothing of
-the requirement specification is implemented yet.
+**Status:** part 1 done. The entity class `Activity` exists with unit tests, and the
+application prints four hard coded activities. There is no register and no menu yet.
 
 ## Build and run
 
@@ -23,8 +23,10 @@ java -cp target/classes edu.ntnu.idi.idatt.ActivityRegisterApp   # run from the 
 pom.xml                          Maven setup with the versions required by the assignment
 src/main/java/edu/ntnu/idi/idatt
   ActivityRegisterApp.java       main(): creates the UI, calls init() and start()
-  ui/TextUserInterface.java      all user interaction (init() and start() are still empty)
-src/test/java/edu/ntnu/idi/idatt   unit tests, mirroring the package structure (not created yet)
+  model/Activity.java            entity class: one logged trip or activity
+  ui/TextUserInterface.java      all user interaction (start() prints test data, no menu yet)
+src/test/java/edu/ntnu/idi/idatt   unit tests, mirroring the package structure
+  model/ActivityTest.java        positive and negative tests of Activity
 src/doc/plantuml/                PlantUML sources, *.puml (not created yet)
 docs/uml/                        generated PNG diagrams for the report (not created yet)
 ```
@@ -87,14 +89,14 @@ that says what changed. Push often.
 
 ### Step 1 – Entity class `Activity` (part 1)
 
-- [ ] Choose fields and data types; `LocalDateTime` for date and time
-- [ ] Decide which fields are fixed at creation and which can change afterwards
-- [ ] Set-methods for all fields, validating their parameter, but only the ones that should
+- [x] Choose fields and data types; `LocalDateTime` for date and time
+- [x] Decide which fields are fixed at creation and which can change afterwards
+- [x] Set-methods for all fields, validating their parameter, but only the ones that should
       be changeable are `public`; the constructor uses the set-methods
-- [ ] Throw fitting exceptions on invalid data, not `IllegalArgumentException` everywhere
-- [ ] Class Javadoc: role, fields with reasons for the data types, mutability, strategy for invalid data
-- [ ] `ActivityTest` with positive and negative tests
-- [ ] `start()` creates 3–4 activities and prints them through a separate print method
+- [x] Throw fitting exceptions on invalid data, not `IllegalArgumentException` everywhere
+- [x] Class Javadoc: role, fields with reasons for the data types, mutability, strategy for invalid data
+- [x] `ActivityTest` with positive and negative tests
+- [x] `start()` creates 3–4 activities and prints them through a separate print method
 - [ ] Tag `v0.1.0`
 
 ### Step 2 – Activity register (part 2, level 1)
