@@ -1,6 +1,7 @@
 package edu.ntnu.idi.idatt.ui;
 
 import edu.ntnu.idi.idatt.model.Activity;
+import edu.ntnu.idi.idatt.registry.ActivityRegister;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -16,11 +17,13 @@ public class TextUserInterface {
   private static final DateTimeFormatter DATE_TIME_FORMATTER =
       DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
 
+  private ActivityRegister activityRegister;
+
   /**
    * Prepares the application for use by creating the objects the user interface depends on.
    */
   public void init() {
-    // The registers are created here once they exist. See the plan in README.md.
+    activityRegister = new ActivityRegister();
   }
 
   /**
@@ -30,15 +33,26 @@ public class TextUserInterface {
     System.out.println("Trip and activity register");
     System.out.println();
 
-    // Temporary test data for part 1, replaced by the activity register in part 2.
-    printActivity(new Activity("Kari Nordmann", "Trip to Storheia",
-        "Clear weather and a great view from the top.", LocalDateTime.of(2026, 10, 3, 14, 30)));
-    printActivity(new Activity("Ola Hansen", "Cycling around Jonsvatnet",
-        "32 km, headwind on the way back.", LocalDateTime.of(2026, 10, 17, 18, 5)));
-    printActivity(new Activity("Kari Nordmann", "City walk along Nidelva",
-        "", LocalDateTime.of(2026, 10, 25, 11, 0)));
-    printActivity(new Activity("Aisha Khan", "Ski trip to Skistua",
+    addTestData();
+    printAllActivities();
+  }
+
+  // Temporary test data until activities can be registered from the menu (part 3).
+  private void addTestData() {
+    activityRegister.addActivity(new Activity("Aisha Khan", "Ski trip to Skistua",
         "First snow of the season.", LocalDateTime.of(2026, 11, 8, 9, 45)));
+    activityRegister.addActivity(new Activity("Kari Nordmann", "Trip to Storheia",
+        "Clear weather and a great view from the top.", LocalDateTime.of(2026, 10, 3, 14, 30)));
+    activityRegister.addActivity(new Activity("Kari Nordmann", "City walk along Nidelva",
+        "", LocalDateTime.of(2026, 10, 25, 11, 0)));
+    activityRegister.addActivity(new Activity("Ola Hansen", "Cycling around Jonsvatnet",
+        "32 km, headwind on the way back.", LocalDateTime.of(2026, 10, 17, 18, 5)));
+  }
+
+  private void printAllActivities() {
+    for (Activity activity : activityRegister.getActivitiesSortedByDateTime()) {
+      printActivity(activity);
+    }
   }
 
   private void printActivity(Activity activity) {

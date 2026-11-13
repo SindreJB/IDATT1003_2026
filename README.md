@@ -4,8 +4,9 @@ Portfolio project in IDATT1003 Programming 1 (NTNU, autumn 2026): a text based a
 for logging trips and activities, with a register of loggers, groups, and local sharing of
 activities.
 
-**Status:** part 1 done. The entity class `Activity` exists with unit tests, and the
-application prints four hard coded activities. There is no register and no menu yet.
+**Status:** part 2, level 1 done. `Activity` and `ActivityRegister` exist with unit tests,
+and the application fills the register with test data and prints it sorted by date and
+time. There are no loggers, groups or menu yet.
 
 ## Build and run
 
@@ -24,9 +25,11 @@ pom.xml                          Maven setup with the versions required by the a
 src/main/java/edu/ntnu/idi/idatt
   ActivityRegisterApp.java       main(): creates the UI, calls init() and start()
   model/Activity.java            entity class: one logged trip or activity
+  registry/ActivityRegister.java holds all activities: add, remove, sorted list, search by date
   ui/TextUserInterface.java      all user interaction (start() prints test data, no menu yet)
 src/test/java/edu/ntnu/idi/idatt   unit tests, mirroring the package structure
   model/ActivityTest.java        positive and negative tests of Activity
+  registry/ActivityRegisterTest.java  positive and negative tests of ActivityRegister
 src/doc/plantuml/                PlantUML sources, *.puml (not created yet)
 docs/uml/                        generated PNG diagrams for the report (not created yet)
 ```
@@ -101,11 +104,11 @@ that says what changed. Push often.
 
 ### Step 2 – Activity register (part 2, level 1)
 
-- [ ] Choose the collection class (`ArrayList`, `HashMap`, `HashSet` ...) and write down why
-- [ ] Add, delete, search by date, and access to all activities sorted by date/time
-- [ ] Do not hand out the internal collection itself (return an iterator or a copy)
-- [ ] Write the test plan in the Javadoc of the test class first, then the tests
-- [ ] `init()` creates the register, `start()` fills it with test data and prints an overview
+- [x] Choose the collection class (`ArrayList`, `HashMap`, `HashSet` ...) and write down why
+- [x] Add, delete, search by date, and access to all activities sorted by date/time
+- [x] Do not hand out the internal collection itself (return an iterator or a copy)
+- [x] Write the test plan in the Javadoc of the test class first, then the tests
+- [x] `init()` creates the register, `start()` fills it with test data and prints an overview
 - [ ] Tag `v0.2.0`
 
 ### Step 3 – Loggers, groups and sharing (part 2, level 2)
