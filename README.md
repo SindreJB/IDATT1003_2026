@@ -4,9 +4,11 @@ Portfolio project in IDATT1003 Programming 1 (NTNU, autumn 2026): a text based a
 for logging trips and activities, with a register of loggers, groups, and local sharing of
 activities.
 
-**Status:** part 2, level 1 done. `Activity` and `ActivityRegister` exist with unit tests,
-and the application fills the register with test data and prints it sorted by date and
-time. There are no loggers, groups or menu yet.
+**Status:** part 2 done (level 1 and 2). Activities, persons, groups, sharing, all searches
+and the statistics exist in the model and register classes, with unit tests. The
+application fills the registers with test data and prints an overview, the activities
+shared with one person, and the statistics. There is no menu yet, so nothing can be entered
+by the user.
 
 ## Build and run
 
@@ -24,12 +26,14 @@ java -cp target/classes edu.ntnu.idi.idatt.ActivityRegisterApp   # run from the 
 pom.xml                          Maven setup with the versions required by the assignment
 src/main/java/edu/ntnu/idi/idatt
   ActivityRegisterApp.java       main(): creates the UI, calls init() and start()
-  model/Activity.java            entity class: one logged trip or activity
-  registry/ActivityRegister.java holds all activities: add, remove, sorted list, search by date
+  model/Activity.java            entity class: one logged trip or activity, and who it is shared with
+  model/Person.java              entity class: a logger and possible recipient
+  model/Group.java               entity class: a named group of persons
+  registry/ActivityRegister.java holds all activities: add, remove, sorted list, searches, statistics
+  registry/PersonRegister.java   holds all persons, looked up by name
+  registry/GroupRegister.java    holds all groups, looked up by name
   ui/TextUserInterface.java      all user interaction (start() prints test data, no menu yet)
-src/test/java/edu/ntnu/idi/idatt   unit tests, mirroring the package structure
-  model/ActivityTest.java        positive and negative tests of Activity
-  registry/ActivityRegisterTest.java  positive and negative tests of ActivityRegister
+src/test/java/edu/ntnu/idi/idatt   unit tests, one test class per model and register class
 src/doc/plantuml/                PlantUML sources, *.puml (not created yet)
 docs/uml/                        generated PNG diagrams for the report (not created yet)
 ```
@@ -113,11 +117,11 @@ that says what changed. Push often.
 
 ### Step 3 – Loggers, groups and sharing (part 2, level 2)
 
-- [ ] `Person` and a person register; `Activity` refers to a `Person` object instead of a name
-- [ ] `Group` with name and members, add/remove member; a group register
-- [ ] Model sharing: private/shared, and who it is shared with (persons and/or groups)
-- [ ] Remaining searches (period, logger, word) and statistics per logger
-- [ ] Tests for every new class, positive and negative
+- [x] `Person` and a person register; `Activity` refers to a `Person` object instead of a name
+- [x] `Group` with name and members, add/remove member; a group register
+- [x] Model sharing: private/shared, and who it is shared with (persons and/or groups)
+- [x] Remaining searches (period, logger, word) and statistics per logger
+- [x] Tests for every new class, positive and negative
 - [ ] Tag `v0.3.0`
 
 ### Step 4 – User interface and own touch (part 3)
