@@ -4,11 +4,9 @@ Portfolio project in IDATT1003 Programming 1 (NTNU, autumn 2026): a text based a
 for logging trips and activities, with a register of loggers, groups, and local sharing of
 activities.
 
-**Status:** part 2 done (level 1 and 2). Activities, persons, groups, sharing, all searches
-and the statistics exist in the model and register classes, with unit tests. The
-application fills the registers with test data and prints an overview, the activities
-shared with one person, and the statistics. There is no menu yet, so nothing can be entered
-by the user.
+**Status:** part 3 in progress. Every level 1 and 2 function can be reached from a numbered
+menu, and wrong input is handled without crashing. The registers start out with test data.
+Own extensions, refactoring notes and the user test remain.
 
 ## Build and run
 
@@ -32,7 +30,8 @@ src/main/java/edu/ntnu/idi/idatt
   registry/ActivityRegister.java holds all activities: add, remove, sorted list, searches, statistics
   registry/PersonRegister.java   holds all persons, looked up by name
   registry/GroupRegister.java    holds all groups, looked up by name
-  ui/TextUserInterface.java      all user interaction (start() prints test data, no menu yet)
+  ui/TextUserInterface.java      menu, carries out each choice and prints the results
+  ui/InputReader.java            reads and checks keyboard input, asks again until it is valid
 src/test/java/edu/ntnu/idi/idatt   unit tests, one test class per model and register class
 src/doc/plantuml/                PlantUML sources, *.puml (not created yet)
 docs/uml/                        generated PNG diagrams for the report (not created yet)
@@ -126,9 +125,9 @@ that says what changed. Push often.
 
 ### Step 4 – User interface and own touch (part 3)
 
-- [ ] Choose menu or commands; build it in `TextUserInterface`
-- [ ] Every level 1 and 2 function reachable from the UI
-- [ ] Robust input: wrong menu choice, text where a number is expected, invalid date, empty
+- [x] Choose menu or commands; build it in `TextUserInterface`
+- [x] Every level 1 and 2 function reachable from the UI
+- [x] Robust input: wrong menu choice, text where a number is expected, invalid date, empty
       input. The program never crashes on user input, and exceptions from the lower layers
       are caught here and turned into understandable messages
 - [ ] Own extensions
@@ -201,3 +200,4 @@ into the report at the end. Code with substantial AI help must also be marked wi
 | Part | Purpose/role | Prompt (short) | Central suggestion from AI | Accepted? | Reason |
 |------|--------------|----------------|----------------------------|-----------|--------|
 | Setup | Project setup (Claude Code) | "I have attached PDFs of the project plan and criteria. Help me create a readme with a project plan containing the AI log." | Maven setup, `.gitignore`, empty `ActivityRegisterApp` and `TextUserInterface`, this README | | |
+| 3 | Menu and robust input (Claude Code) | "Do step 4 from the README" | Numbered menu in `TextUserInterface`; input reading and checking moved to a new `InputReader` that asks again until the input is valid; lists to choose from leave out choices the model would refuse; model exceptions caught per action and shown as messages | | |
